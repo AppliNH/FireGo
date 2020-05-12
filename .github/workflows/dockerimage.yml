@@ -20,4 +20,4 @@ jobs:
           PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKERFILE: "Dockerfile"
           IMAGE_NAME: "USERNAME/IMAGE_NAME"
-          TAG_NAME: $ {{ TAG_NAME }}
+          TAG_NAME: ${{ TAG_NAME }}
