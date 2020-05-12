@@ -16,9 +16,17 @@ This system uses a logic of "resources", which are in fact separate JSON Documen
 To start the API, you can use :
 
 ``` go run main.go```
+
+
 **or**
+
+
 ``` go build -o firego .``` and ```./firego```
+
+
 **or**
+
+
 ```docker build -t firego .``` and ```docker run -d -p 5000:5000 firego```
 
 
