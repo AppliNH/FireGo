@@ -8,6 +8,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: tmprimitivo/firego:${BRANCH_NAME}
+        name: tmprimitivo/firego
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        tagging: true
