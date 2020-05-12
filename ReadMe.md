@@ -47,9 +47,6 @@ In order to insert an item in a resource, you can query this, by using the ```PO
 ``` curl -d '{"name":"t-shirt", "price":"8.80"}' -X POST localhost:5000/products```
 
 In the body of your request, you can put the data to insert.
-For now, values can only be strings.
-
-But I'll fix this asap.
 
 ### Update 
 
@@ -58,9 +55,6 @@ In order to update an item in a resource you'll first need its ID, which is auto
 ``` curl -d '{"name":"t-shirt", "price":"8.80"}' -X PATCH localhost:5000/products/productsID```
 
 In the body of your request, you can put the data to insert.
-For now, values can only be strings. 
-
-But I'll fix this asap.
 
 ## Functionnalities Roadmap
 
