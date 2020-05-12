@@ -38,7 +38,7 @@ func POST_ResHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	res := mux.Vars(r)["res"]
 
-	data := make(map[string]string)
+	data := make(map[string]interface{})
 	err := json.NewDecoder(r.Body).Decode(&data)
 
 	if err != nil {
@@ -58,7 +58,7 @@ func PATCH_ResHandler(w http.ResponseWriter, r *http.Request) {
 	res := mux.Vars(r)["res"]
 	id := mux.Vars(r)["id"]
 
-	data := make(map[string]string)
+	data := make(map[string]interface{})
 	err := json.NewDecoder(r.Body).Decode(&data)
 
 	if err != nil {

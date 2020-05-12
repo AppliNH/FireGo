@@ -8,7 +8,7 @@ import (
 // a fish
 type Fish struct{ Name string }
 
-func WriteItem(res string, items map[string]string) string {
+func WriteItem(res string, items map[string]interface{}) string {
 	//toInsert := make(map[string]map[string]string)
 	exisingItems := ReadRes(res)
 	uuid := utils.GenerateUuid()
@@ -20,7 +20,7 @@ func WriteItem(res string, items map[string]string) string {
 	return uuid
 }
 
-func UpdateItem(res string, id string, item map[string]string) {
+func UpdateItem(res string, id string, item map[string]interface{}) {
 	exisingItems := ReadRes(res)
 	exisingItems[id] = item
 	
@@ -28,9 +28,9 @@ func UpdateItem(res string, id string, item map[string]string) {
 	db.Write("dbItems", res, exisingItems)
 }
 
-func ReadRes(res string) map[string]map[string]string {
+func ReadRes(res string) map[string]map[string]interface{} {
 	db, _ := scribble.New("./dbItems", nil)
-	value := make(map[string]map[string]string)
+	value := make(map[string]map[string]interface{})
 	db.Read("dbItems", res, &value)
 	return value
 }

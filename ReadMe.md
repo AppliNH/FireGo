@@ -64,5 +64,5 @@ But I'll fix this asap.
 
 ## Functionnalities Roadmap
 
-- [ ] Allow to insert all kind of values (bool, string, num ..)
-- [ ] Deploy to Heroku
+- [x] F1 : Allow to insert all kind of values (bool, string, num ..)
+- [ ] F2 : Deploy to Heroku
