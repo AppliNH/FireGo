@@ -13,11 +13,24 @@ It's not as sophiscated, for now.
 
 This system uses a logic of "resources", which are in fact separate JSON Documents.
 
+To start the API, you can use :
+
+``` go run main.go```
+**or**
+``` go build -o firego .``` and ```./firego```
+**or**
+```docker build -t firego .``` and ```docker run -d -p 5000:5000 firego```
+
+
 ### Read
 
 In order to read from a resource, you can query this, by using the ```GET``` method :
 
-``` localhost:5000/resource```
+``` curl localhost:5000/resource```
+
+You can also read a specific ID from a resource.
+
+``` curl localhost:5000/resource/id```
 
 ### Write
 

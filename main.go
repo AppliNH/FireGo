@@ -23,6 +23,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", api.HomeHandler).Methods("GET")
 	r.HandleFunc("/{res}",api.GET_ResHandler).Methods("GET")
+	r.HandleFunc("/{res}/{id}",api.GET_ResHandler).Methods("GET")
 	r.HandleFunc("/{res}",api.POST_ResHandler).Methods("POST")
 	r.HandleFunc("/{res}/{id}",api.PATCH_ResHandler).Methods("PATCH")
    	
