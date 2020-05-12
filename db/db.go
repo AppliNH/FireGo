@@ -11,7 +11,7 @@ import (
 // a fish
 type Fish struct{ Name string }
 
-func WriteItem(res string, items map[string]string ) {
+func WriteItem(res string, items map[string]string) string {
 	//toInsert := make(map[string]map[string]string)
 	exisingItems := ReadRes(res)
 	uuid := utils.GenerateUuid()
@@ -20,6 +20,7 @@ func WriteItem(res string, items map[string]string ) {
 	
 	exisingItems[uuid] = items
 	db.Write("dbItems", res, exisingItems)
+	return uuid
 }
 
 func UpdateItem(res string, id string, item map[string]string) {

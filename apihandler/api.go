@@ -35,10 +35,11 @@ func POST_ResHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
         http.Error(w, err.Error(), http.StatusBadRequest)
         return
-    }
-	db.WriteItem(res,data)
-	fmt.Println(res)
-	fmt.Println(data)
+	}
+	
+	uuid := db.WriteItem(res,data)
+	response := map[string]string {"statusCode":"200","success":"true","id":uuid,"res":res}
+	json.NewEncoder(w).Encode(response)
 }
 func PATCH_ResHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -56,4 +57,6 @@ func PATCH_ResHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	db.UpdateItem(res, id, data)
+	response := map[string]string {"statusCode":"200","success":"true","id":id, "res":res}
+	json.NewEncoder(w).Encode(response)
 }
