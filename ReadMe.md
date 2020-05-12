@@ -1,4 +1,4 @@
-# GoFire
+# FireGo
 
 A little Golang API which allows to dynamically create JSON documents from a "Database like" aspect
 
