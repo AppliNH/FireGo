@@ -12,12 +12,11 @@ jobs:
           fetch-depth: 1
 
       - name: Docker Build & Push to Docker Hub
-        uses: opspresso/action-docker@master
+        uses: docker/build-push-action@v1
         with:
           args: --docker
         env:
-          USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKERFILE: "Dockerfile"
-          IMAGE_NAME: "tmprimitivo/firego"
-          TAG_NAME: $GITHUB_REF
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: tmprimitivo/firego
+          tag_with_ref: true  
