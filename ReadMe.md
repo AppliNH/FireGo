@@ -60,4 +60,4 @@ In the body of your request, you can put the data to insert.
 
 - [x] F1 : Allow to insert all kind of values (bool, string, num ..)
 - [ ] F2 : Deploy to Heroku
-- [ ] F3 : Choose the data ID while posting it
+- [ ] F3 : Choose the data ID when posting it
