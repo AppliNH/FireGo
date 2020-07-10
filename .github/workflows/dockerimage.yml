@@ -1,6 +1,8 @@
-name: Docker Push
+name: Docker Hub Push
 
-on: push
+on: 
+ push:
+    branches: [ master ]
 
 jobs:
   docker:
@@ -20,3 +22,16 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: tmprimitivo/firego
           tag_with_ref: true  
+
+  ghregistry:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: GithubPackages-Docker
+      uses: Kolkies/githubpackages-docker@v1.0.4
+      with:
+        # Access token which is used to deploy the image to the repository.
+        repo-token:  ${{ secrets.GITHUB_TOKEN }}
+        # Name for the docker image
+        image-name: tmprimitivo/firego
