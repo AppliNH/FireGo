@@ -25,13 +25,12 @@ func GET_ResHandler(w http.ResponseWriter, r *http.Request) {
 		if _, ok := result[val]; ok {
 			json.NewEncoder(w).Encode(result[val])
 		} else {
-			json.NewEncoder(w).Encode(map[string]string{"statusCode": "400", "success": "false", "error": "item not found"})
+			json.NewEncoder(w).Encode(map[string]interface{}{"statusCode": 400, "success": false, "error": "ITEM_NOT_FOUND"})
 		}
-		
 	} else {
 		json.NewEncoder(w).Encode(result)
 	}
-	
+
 }
 
 func POST_ResHandler(w http.ResponseWriter, r *http.Request) {
@@ -47,8 +46,14 @@ func POST_ResHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	uuid := db.WriteItem(res, data)
-	response := map[string]string{"statusCode": "200", "success": "true", "id": uuid, "res": res}
+	var response map[string]interface{}
+
+	if uuid, err := db.WriteItem(res, data); err != nil {
+		response = map[string]interface{}{"statusCode": 400, "success": false, "error": err.Error()}
+	} else {
+		response = map[string]interface{}{"statusCode": 200, "success": true, "id": uuid, "res": res}
+	}
+
 	json.NewEncoder(w).Encode(response)
 }
 
@@ -67,7 +72,13 @@ func PATCH_ResHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db.UpdateItem(res, id, data)
-	response := map[string]string{"statusCode": "200", "success": "true", "id": id, "res": res}
+	var response map[string]interface{}
+
+	if e := db.UpdateItem(res, id, data); e != nil {
+		response = map[string]interface{}{"statusCode": 400, "success": false, "error": e.Error()}
+	} else {
+		response = map[string]interface{}{"statusCode": 200, "success": true, "id": id, "res": res}
+	}
+
 	json.NewEncoder(w).Encode(response)
 }
