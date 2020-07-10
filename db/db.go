@@ -5,16 +5,20 @@ import (
 	"primitivo.fr/applinh/GoFire/utils"
 )
 
-// a fish
-type Fish struct{ Name string }
-
 func WriteItem(res string, items map[string]interface{}) string {
 	//toInsert := make(map[string]map[string]string)
 	exisingItems := ReadRes(res)
-	uuid := utils.GenerateUuid()
-	
+	var uuid string
+
+	if id, exist := items["id"]; exist {
+		if _, exist2 := exisingItems[id.(string)]; !exist2 {
+			uuid = id.(string)
+		}
+	} else {
+		uuid = utils.GenerateUuid()
+	}
 	db, _ := scribble.New("./dbItems", nil)
-	
+
 	exisingItems[uuid] = items
 	db.Write("dbItems", res, exisingItems)
 	return uuid
@@ -23,7 +27,7 @@ func WriteItem(res string, items map[string]interface{}) string {
 func UpdateItem(res string, id string, item map[string]interface{}) {
 	exisingItems := ReadRes(res)
 	exisingItems[id] = item
-	
+
 	db, _ := scribble.New("./dbItems", nil)
 	db.Write("dbItems", res, exisingItems)
 }
