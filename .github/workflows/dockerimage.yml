@@ -3,6 +3,7 @@ name: Docker Hub Push
 on: 
  push:
     branches: [ master ]
+    tags: "*"
 
 jobs:
   docker:
