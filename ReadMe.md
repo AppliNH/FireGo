@@ -1,4 +1,4 @@
-# FireGo
+# 🔥 FireGo
 
 A little Golang API which allows to dynamically create JSON documents with a NoSQL Database perspective.
 
