@@ -2,6 +2,7 @@
 
 A little Golang API which allows to dynamically create JSON documents with a NoSQL Database perspective.
 
+
 ## What is it
 
 Just an API running on port 5000, which allows you to dynamically create JSON documents in order to constitute kind of a NoSQL Database.
@@ -28,6 +29,12 @@ To start the API, you can use :
 
 
 ```docker build -t firego .``` and ```docker run -d -p 5000:5000 firego```
+
+
+**or**
+
+
+`docker pull tmprimitivo/firego` and `docker run -p 5000:5000 tmprimitivo/firego`
 
 
 ### Read
