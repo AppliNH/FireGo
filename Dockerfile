@@ -1,5 +1,7 @@
 FROM golang:latest
 
+ENV PORT
+
 ENV GO111MODULE=on
 
 WORKDIR /app
@@ -13,6 +15,5 @@ COPY . .
 # Build the Go app
 RUN go build -o firego .
 
-EXPOSE 5000
 
 CMD ["./firego"]
