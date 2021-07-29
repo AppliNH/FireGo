@@ -33,6 +33,8 @@ func main() {
 	r.HandleFunc("/{res}", api.POST_ResHandler).Methods("POST")
 	r.HandleFunc("/{res}/{id}", api.PATCH_ResHandler).Methods("PATCH")
 
+	log.Println("Starting FireGo on port " + port)
+
 	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, r))
 
 }

@@ -1,6 +1,5 @@
 FROM golang:latest
 
-ENV PORT
 
 ENV GO111MODULE=on
 

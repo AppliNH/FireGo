@@ -3,6 +3,7 @@ package apihandler
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -10,7 +11,7 @@ import (
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("ok")
+	log.Println("Your request has been correctly received on GET /")
 }
 
 func GET_ResHandler(w http.ResponseWriter, r *http.Request) {
